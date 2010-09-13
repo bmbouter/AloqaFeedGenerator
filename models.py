@@ -5,8 +5,8 @@ class Placemark(models.Model):
     description = models.TextField(max_length=512)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    url = URLField(blank=True, verify_exists=True)
-    phone_number = models.IntegerField(blank=True)
+    url = models.URLField(blank=True, verify_exists=True)
+    phone_number = models.CharField(blank=True, max_length=9)
     email = models.EmailField(blank=True)
     show_map = models.BooleanField(default=True)
 
