@@ -1,4 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+
+from models import Placemark
 
 def viewFeed(request):
-    return HttpResponse('@Todo put feed view here')
+    placemarks = Placemark.objects.all()
+    return render_to_response('aloqaFeed.kml',
+                               {'placemarks': placemarks })

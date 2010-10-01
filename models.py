@@ -6,7 +6,7 @@ class Placemark(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     url = models.URLField(blank=True, verify_exists=True)
-    phone_number = models.CharField(blank=True, max_length=9)
+    phone_number = models.CharField(max_length=11, blank=True)
     email = models.EmailField(blank=True)
     show_map = models.BooleanField(default=True)
 

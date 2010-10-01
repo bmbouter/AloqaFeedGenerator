@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1" xmlns:aloqa="http://www.aloqa.com/2009/feed">
+<Document>{% if placemarks %}{% for pm in placemarks %}
+<Placemark id="event_{{ forloop.counter }}" >
+   <name>{{ pm.name }}</name>
+   <description><![CDATA[{{ pm.description }}]]></description>
+   <Style>
+      <IconStyle>
+         <Icon><href>http://www.iconarchive.com/show/circus-icons-by-iconshock/magic-hat-icon.html</href></Icon>
+      </IconStyle>
+   </Style>
+   <Point>
+      <coordinates>{{ pm.longitude }},{{ pm.latitude }},0</coordinates>
+   </Point>
+   <aloqa:onView>
+     <aloqa:actions>
+       <aloqa:call>
+       <aloqa:number>{{ pm.phone_number }}</aloqa:number>
+       </aloqa:call>
+       <aloqa:map/>
+       <aloqa:web id="event_{{ forloop.counter }}_web_{{ forloop.counter }}">
+         <aloqa:customLabel>Show website</aloqa:customLabel>
+         <aloqa:url>{{ pm.url }}</aloqa:url>
+       </aloqa:web>
+     </aloqa:actions>
+   </aloqa:onView>
+</Placemark>{% endfor %}{% endif %}
+</Document>
+</kml>
